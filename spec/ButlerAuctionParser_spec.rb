@@ -1,5 +1,6 @@
 require './ButlerAuctionParser.rb'
 require './app/models/Auction.rb'
+require 'support/active_record'
 
 describe ButlerAuctionParser do
   before(:each) do
@@ -18,7 +19,11 @@ describe ButlerAuctionParser do
   end
   
   it 'returns first auction correctly' do
-    @auctions[0].date.should == "12-Jul-12"
+    @auctions[0].date.should be_a(DateTime)
+    @auctions[0].date.month.should == 7
+    @auctions[0].date.day.should == 12
+    @auctions[0].date.year.should == 2012
+    
     @auctions[0].plaintiff.should == "NANCY E. NIX, TREASURER"
     @auctions[0].defendant.should == "WILLIAM F. BURGER, JR., ET AL"
     @auctions[0].address.should == "2016 ARLINGTON AVE., MIDDLETOWN 45042"
@@ -28,7 +33,11 @@ describe ButlerAuctionParser do
   end
   
   it 'returns second auction correctly' do
-    @auctions[1].date.should == "12-Jul-12"
+    @auctions[0].date.should be_a(DateTime)
+    @auctions[0].date.month.should == 7
+    @auctions[0].date.day.should == 12
+    @auctions[0].date.year.should == 2012
+
     @auctions[1].plaintiff.should == "BAC HOME LOANS SERVICING, LP..."
     @auctions[1].defendant.should == "CARL FREDERICK COCKERHAM, ET AL"
     @auctions[1].address.should == "4534 BONITA DR., #183, MIDDLETOWN 45044"

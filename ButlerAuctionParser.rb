@@ -26,7 +26,7 @@ class ButlerAuctionParser
     if(plaintiff == nil) then return nil end
       
     auction = Auction.new
-    auction.date = find_value(a, "Date:")
+    auction.date = DateTime.strptime(find_value(a, "Date:"), "%d-%b-%y") 
     auction.plaintiff = plaintiff
     auction.defendant = find_value(a, "Defendant:")
     auction.address = find_value(a, "Address:")
