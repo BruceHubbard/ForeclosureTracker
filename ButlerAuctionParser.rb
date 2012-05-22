@@ -1,11 +1,12 @@
 require './app/models/Auction.rb'
+require 'iconv'
 
 class ButlerAuctionParser
   
   @@val_start = "<span"
   
   def initialize(text)
-    @text = text
+    @text = Iconv.conv('UTF-8', 'WINDOWS-1252', text)
   end
   
   def auctions
