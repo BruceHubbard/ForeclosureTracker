@@ -9,7 +9,9 @@ class AuctionController < ApplicationController
   
   def genAuction
     ButlerCountyAuctions.new.auctions.each do |auction|
-      auction.save
+      if(!Auction.exists?(:address => auction.address))
+        auction.save
+      end
     end
 
     redirect_to :controller=>'home', :action => 'index'
