@@ -9,11 +9,15 @@ gem 'sqlite3'
 gem 'mongo_mapper'
 gem 'bson_ext'
 
+gem 'handlebars_assets'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
+
+  gem 'handlebars_assets'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platform => :ruby
