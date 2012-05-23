@@ -4,7 +4,7 @@ require './ButlerCountyAuctions'
 
 class AuctionController < ApplicationController
   def index
-    render :json => Auction.all
+    render :json => Auction.search(params)
   end
   
   def genAuction
