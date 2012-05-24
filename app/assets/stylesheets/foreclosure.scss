@@ -31,3 +31,9 @@ body {
 		}
 	}
 }
+
+.auction {
+	.appraised, .starting {
+		text-align: right;
+	}
+}

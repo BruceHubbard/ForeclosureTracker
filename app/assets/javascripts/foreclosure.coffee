@@ -23,7 +23,7 @@ $ ->
 			data: params,
 			success: (data) -> 
 				html = HandlebarsTemplates['listing']({auctions: data})
-				$('#listing').html(html)
+				$('.listing tbody').html(html)
 		)
 	
 	refreshAuctions()
