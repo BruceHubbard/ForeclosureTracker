@@ -3,7 +3,7 @@ $ ->
 		range: true,
 		min: 0,
 		max: 500000,
-		step: 10000,
+		step: 20000,
 		values: [0,500000],
 		slide: (event, ui) -> 
 		 	$('.appraised-range .min').text ui.values[0]

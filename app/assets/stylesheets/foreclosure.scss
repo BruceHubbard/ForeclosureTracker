@@ -3,12 +3,31 @@ body {
 }
 
 .filters {
-	.appraised-range {
-		width: 300px;
+	h3 {
+		font-size: 12pt;
+		text-align: center;
 	}
-}
 
-.slider {
-	width: 80%;
-	display: inline-block;
+	.range {
+		width: 300px;
+		
+		.min {
+			text-align: right;
+		}
+		
+		.max {
+			text-align: left;
+		}
+		
+		.min, .max {
+			display: inline-block;
+			width: 55px;
+		}
+		
+		.slider {
+			width: 160px;
+			display: inline-block;
+			margin: 0 10px;
+		}
+	}
 }
