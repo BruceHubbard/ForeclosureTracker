@@ -9,13 +9,12 @@ describe ButlerAuctionParser do
     @auctions = @parser.auctions
   end
   
-  it "returns 2 auctions" do
-    @auctions.length.should == 2
+  it "returns 3 auctions" do
+    @auctions.length.should == 3
   end
   
   it "returns auction objects" do
-    @auctions[0].should be_a(Auction)
-    @auctions[1].should be_a(Auction)
+    for auction in @auctions do auction.should be_a(Auction) end
   end
   
   it 'returns first auction correctly' do
@@ -33,10 +32,10 @@ describe ButlerAuctionParser do
   end
   
   it 'returns second auction correctly' do
-    @auctions[0].date.should be_a(DateTime)
-    @auctions[0].date.month.should == 7
-    @auctions[0].date.day.should == 12
-    @auctions[0].date.year.should == 2012
+    @auctions[1].date.should be_a(DateTime)
+    @auctions[1].date.month.should == 7
+    @auctions[1].date.day.should == 12
+    @auctions[1].date.year.should == 2012
 
     @auctions[1].plaintiff.should == "BAC HOME LOANS SERVICING, LP..."
     @auctions[1].defendant.should == "CARL FREDERICK COCKERHAM, ET AL"
@@ -44,5 +43,14 @@ describe ButlerAuctionParser do
     @auctions[1].caseNumber.should == "CV10052049"
     @auctions[1].appraised.should == 64200
     @auctions[1].startingBid.should == 42800
+  end
+
+  it 'returns 3rd auction correctly' do
+    @auctions[2].plaintiff.should == "NANCY E. NIX, TREASURER"
+    @auctions[2].defendant.should == "JAMES R. RYE, ET AL."
+    @auctions[2].address.should == "514 S &quot;B&quot; STREET, HAMILTON, OH 45013"
+    @auctions[2].caseNumber.should == "CV11103730"
+    @auctions[2].appraised.should == 7949
+    @auctions[2].startingBid.should == 0
   end
 end
