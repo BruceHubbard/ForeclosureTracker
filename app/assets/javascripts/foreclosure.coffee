@@ -24,6 +24,7 @@ $ ->
 			success: (data) -> 
 				html = HandlebarsTemplates['listing']({auctions: data})
 				$('.listing tbody').html(html)
+				$('.navbar .num-matches').text data.length + " matches"
 		)
 
 	Handlebars.registerHelper('money', (amount) ->
