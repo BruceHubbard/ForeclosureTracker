@@ -2,6 +2,14 @@ body {
 	padding-top: 60px;
 }
 
+.listing table th {
+	cursor: pointer;
+	
+	.sort-dir {
+		margin-left: 5px;
+	}
+}
+
 .filters {
 	
 	h3 {

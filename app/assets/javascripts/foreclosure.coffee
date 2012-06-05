@@ -1,3 +1,6 @@
+up_arr = "▴"
+down_arr = "▾"
+
 $ -> 
 	appraisedSlider = $('.appraised-range .slider').slider(
 		range: true,
@@ -21,6 +24,12 @@ $ ->
 			showOld: $('input[name=showOld]:checked').val()
 		}
 		
+		sort = $('.listing table th .sort-dir')
+		
+		if(sort.length > 0) 
+			params.sortProp = sort.closest('th').text().replace(up_arr, "").replace(down_arr, "").trim()
+			params.sortDir = if sort.hasClass('asc') then 'asc' else 'desc'
+		
 		$.ajax(
 			url: "auction",
 			data: params,
@@ -31,6 +40,21 @@ $ ->
 		)
 		
 	$(".show-old .button-group").buttonset()
+
+	$('.listing table th').click(() -> 
+		that = this;
+		arrow = $(this).find('.sort-dir')
+		if(arrow.length > 0)
+			if(arrow.hasClass('asc'))
+				arrow.removeClass('asc').addClass('desc').text(down_arr)
+			else if(arrow.hasClass('desc')) 
+				arrow.removeClass('desc').addClass('asc').text(up_arr)		
+		else
+			$('.listing table th .sort-dir').remove()
+			$(this).append($('<span class="sort-dir asc">' + up_arr + '</span>'))
+			
+		refreshAuctions()
+	)
 
 	Handlebars.registerHelper('money', (amount) ->
 		return amount.toMoney(0);
