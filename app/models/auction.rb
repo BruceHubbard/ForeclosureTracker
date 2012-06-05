@@ -8,6 +8,7 @@ class Auction < ActiveRecord::Base
     query = Auction.scoped
     query = query.where("appraised >= ?", options[:appraised_min]) if options[:appraised_min]
     query = query.where("appraised <= ?", options[:appraised_max]) if options[:appraised_max]
+    query = query.where("date >= ?", Date.today) if !options[:showOld] || options[:showOld] == "false" 
     
     sort_col = options["sort_col"] || "date"
     sort_ord = options["sort_ord"] || "asc"
