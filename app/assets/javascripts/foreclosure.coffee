@@ -27,7 +27,7 @@ $ ->
 		sort = $('.listing table th .sort-dir')
 		
 		if(sort.length > 0) 
-			params.sortProp = sort.closest('th').text().replace(up_arr, "").replace(down_arr, "").trim()
+			params.sortProp = sort.closest('th').data('prop')
 			params.sortDir = if sort.hasClass('asc') then 'asc' else 'desc'
 		
 		$.ajax(
