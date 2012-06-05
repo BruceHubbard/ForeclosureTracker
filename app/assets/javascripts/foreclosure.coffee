@@ -12,10 +12,13 @@ $ ->
 			refreshAuctions()
 	)
 	
+	$('.show-old input').change(() -> refreshAuctions())
+	
 	refreshAuctions = -> 
 		params = {
 			appraised_min: appraisedSlider.slider("values")[0],
-			appraised_max: appraisedSlider.slider("values")[1]
+			appraised_max: appraisedSlider.slider("values")[1],
+			showOld: $('input[name=showOld]:checked').val()
 		}
 		
 		$.ajax(
@@ -26,6 +29,8 @@ $ ->
 				$('.listing tbody').html(html)
 				$('.navbar .num-matches').text data.length + " matches"
 		)
+		
+	$(".show-old .button-group").buttonset()
 
 	Handlebars.registerHelper('money', (amount) ->
 		return amount.toMoney(0);

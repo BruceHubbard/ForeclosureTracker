@@ -3,19 +3,42 @@ body {
 }
 
 .filters {
-	label {
-		color: #999;
-		margin-bottom: 3px;
-	}
 	
 	h3 {
 		font-size: 12pt;
 		text-align: center;
 		line-height: 24px;
 	}
+	
+	.filter {
+		float: left;
+	}
+	
+	.show-old {
+		label {
+			filter:alpha(opacity=80); /* IE */
+			opacity: 0.8; /* Safari, Opera */
+			-moz-opacity:0.80; /* FireFox */
+			
+			span {
+				padding: .1em 1em;
+			}
+		}
+		
+		label.ui-state-active {
+			filter:alpha(opacity=100); /* IE */
+			opacity: 1.0; /* Safari, Opera */
+			-moz-opacity:1.00; /* FireFox */			
+		}
+	}
 
 	.range {
 		width: 300px;
+
+		label {
+			color: #999;
+			margin-bottom: 3px;
+		}
 		
 		.min {
 			text-align: right;
