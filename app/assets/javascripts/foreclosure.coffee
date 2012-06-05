@@ -36,6 +36,11 @@ $ ->
 		return amount.toMoney(0);
 	)	
 	
+	Handlebars.registerHelper('prettyDate', (date) -> 
+		d = new Date(Date.parse(date))
+		(d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear()
+	)
+	
 	Number.prototype.toMoney = (decimals = 2, decimal_separator = ".", thousands_separator = ",") ->
 		n = this
 		c = if isNaN(decimals) then 2 else Math.abs decimals
