@@ -4,16 +4,17 @@ require 'iconv'
 class ButlerAuctionParser
   
   @@val_start = "<span"
-  @@junk_input = "<span style='mso-spacerun:yes'>  </span>"
+  @@junk_input = /<span\s?style='mso-spacerun:yes'>.*?<\/span>/mi
   
   def initialize(text)
-    @text = clean_text(text)
+    @text = clean_text(text)    
   end
   
   def clean_text(text)
     temp = Iconv.conv('UTF-8', 'WINDOWS-1252', text)
-    temp = temp.gsub("\n", " ")
+    temp = temp.gsub("\r\n", " ")
     temp = temp.gsub(@@junk_input, " ")
+    
     temp
   end
   
