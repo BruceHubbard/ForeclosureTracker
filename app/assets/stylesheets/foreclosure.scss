@@ -79,4 +79,13 @@ body {
 	.appraised, .starting {
 		text-align: right;
 	}
+	
+	.map {
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		background-image: url("../img/map_icon.jpg");
+		background-size: 100%;
+		background-repeat: no-repeat;
+	}
 }
