@@ -8,6 +8,7 @@ gem 'rails', '3.2.3'
 gem 'sqlite3'
 gem 'mongo_mapper'
 gem 'bson_ext'
+gem 'geocoder'
 
 gem 'handlebars_assets'
 

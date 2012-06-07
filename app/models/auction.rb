@@ -1,8 +1,17 @@
 require 'active_record'
 
 class Auction < ActiveRecord::Base
-  scope :by_appraised_min, lambda { |min| }
-
+  after_initialize :init
+  
+  def init
+    self.hasValidAddress ||= false
+  end
+  
+  def fullAddress
+    return !hasValidAddress ? 
+              rawAddress : 
+              "#{streetNumber} #{streetName}  #{city}, #{state} #{zip}"
+  end
 
   def self.search(options)
     query = Auction.scoped
@@ -17,6 +26,10 @@ class Auction < ActiveRecord::Base
     
     query.all
   end 
+  
+  def as_json(options = {})
+    super.as_json(options).merge({:fullAddress => fullAddress})
+  end
   
   def to_s
     "Auction<date=#{self.date}, plaintiff=#{self.plaintiff}, address=#{self.address}, " +

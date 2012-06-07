@@ -11,18 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120521182109) do
+ActiveRecord::Schema.define(:version => 20120606175646) do
 
   create_table "auctions", :force => true do |t|
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.string   "plaintiff"
     t.string   "defendant"
-    t.string   "address"
     t.string   "caseNumber"
     t.integer  "appraised"
     t.integer  "startingBid"
     t.datetime "date"
+    t.string   "rawAddress"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "streetNumber"
+    t.string   "streetName"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.boolean  "hasValidAddress"
   end
 
 end

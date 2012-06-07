@@ -39,7 +39,7 @@ class ButlerAuctionParser
     auction.date = DateTime.strptime(find_value(a, "Date:"), "%d-%b-%y") 
     auction.plaintiff = plaintiff
     auction.defendant = find_value(a, "Defendant:")
-    auction.address = find_value(a, "Address:")
+    auction.rawAddress = find_value(a, "Address:")
     auction.caseNumber = find_value(a, "# :")
     auction.appraised = find_value(a, "Appraised:").to_i
     auction.startingBid = find_value(a, "Starting Bid:").to_i
