@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'mongo_mapper'
 gem 'bson_ext'
 gem 'geocoder'
+gem 'pg'
 
 gem 'handlebars_assets'
 

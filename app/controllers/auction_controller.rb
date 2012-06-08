@@ -11,7 +11,6 @@ class AuctionController < ApplicationController
   def genAuction
     ButlerCountyAuctions.new.auctions.each do |auction|
       if(!Auction.exists?(:rawAddress => auction.rawAddress))
-        puts auction.rawAddress
         AddressCleanser.Cleanse(auction)
         auction.save
       end

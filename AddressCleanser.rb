@@ -2,7 +2,7 @@ require 'Geocoder'
 
 class AddressCleanser
   def self.Cleanse(address)
-    puts "Cleansing: " + address
+    puts "Cleansing: #{address.rawAddress}"
     results = Geocoder.search(address.rawAddress)
     
     address.hasValidAddress = false

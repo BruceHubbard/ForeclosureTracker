@@ -18,11 +18,11 @@ ActiveRecord::Schema.define(:version => 20120606175646) do
     t.datetime "updated_at",      :null => false
     t.string   "plaintiff"
     t.string   "defendant"
+    t.string   "rawAddress"
     t.string   "caseNumber"
     t.integer  "appraised"
     t.integer  "startingBid"
     t.datetime "date"
-    t.string   "rawAddress"
     t.float    "latitude"
     t.float    "longitude"
     t.string   "streetNumber"
