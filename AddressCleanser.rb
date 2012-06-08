@@ -1,4 +1,4 @@
-require 'Geocoder'
+require 'geocoder'
 
 class AddressCleanser
   def self.Cleanse(address)
