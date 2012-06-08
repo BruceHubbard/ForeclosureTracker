@@ -1,5 +1,5 @@
 require 'rspec'
-require './AddressCleanser'
+require './AddressCleanser.rb'
 
 describe AddressCleanser do
   

@@ -1,5 +1,5 @@
 require 'rspec'
-require './ButlerListingParser'
+require './ButlerListingParser.rb'
 
 describe ButlerListingParser do
   before(:each) do

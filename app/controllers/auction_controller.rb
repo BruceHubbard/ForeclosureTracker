@@ -1,7 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
-require './ButlerCountyAuctions'
-require './AddressCleanser'
+require './ButlerCountyAuctions.rb'
+require './AddressCleanser.rb'
 
 class AuctionController < ApplicationController
   def index

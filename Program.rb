@@ -1,6 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
-require './ButlerListingParser'
+require './ButlerListingParser.rb'
 require './ButlerAuctionParser.rb'
 
 doc = Nokogiri::HTML(open('http://www.butlersheriff.org/geninfo/gen_info_sheriff_sales_listing.htm'))

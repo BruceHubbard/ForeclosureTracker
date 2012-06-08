@@ -1,6 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
-require './ButlerListingParser'
+require './ButlerListingParser.rb'
 require './ButlerAuctionParser.rb'
 
 class ButlerCountyAuctions
