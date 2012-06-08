@@ -62,7 +62,7 @@ $ ->
 	
 	Handlebars.registerHelper('prettyDate', (date) -> 
 		d = new Date(Date.parse(date))
-		(d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear()
+		(d.getMonth() + 1) + '/' + (d.getDate() + 1) + '/' + d.getFullYear()
 	)
 	
 	Number.prototype.toMoney = (decimals = 2, decimal_separator = ".", thousands_separator = ",") ->
