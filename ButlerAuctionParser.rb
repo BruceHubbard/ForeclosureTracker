@@ -1,4 +1,3 @@
-require './app/models/Auction.rb'
 require 'iconv'
 
 class ButlerAuctionParser
