@@ -3,6 +3,7 @@ down_arr = "▾"
 
 $ -> 
 	lastResult = null
+	map = null
 	
 	appraisedSlider = $('.appraised-range .slider').slider(
 		range: true,
@@ -46,6 +47,7 @@ $ ->
 		if viewType == 'list' 
 			$('.map').hide()
 			$('.listing').show()
+			map = null
 			html = HandlebarsTemplates['listing']({auctions: result})
 			$('.listing tbody').html(html)
 		else
@@ -56,12 +58,15 @@ $ ->
 		$('.navbar .num-matches').text result.length + " matches"
 	
 	addMap = (auctions) -> 
-		map = new GMaps({
+		initialized = map?
+		
+		map = map || new GMaps({
 		        div: '#map',
 		        lat: 39.343333,
 		        lng: -84.528333,
 				zoom: 11
 		      });
+		map.removeMarkers()
 		
 		haveRealCoords = (a for a in auctions when a.hasValidAddress)
 		
@@ -71,8 +76,10 @@ $ ->
 				lng: a.longitude,
 				title: a.fullAddress
 			})
-			
-		map.fitZoom()
+		
+		if not initialized	
+			initialized = true
+			map.fitZoom()
 		
 		
 		
