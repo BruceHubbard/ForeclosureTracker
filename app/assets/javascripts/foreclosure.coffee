@@ -2,6 +2,8 @@ up_arr = "▴"
 down_arr = "▾"
 
 $ -> 
+	lastResult = null
+	
 	appraisedSlider = $('.appraised-range .slider').slider(
 		range: true,
 		min: 0,
@@ -34,12 +36,48 @@ $ ->
 			url: "auction",
 			data: params,
 			success: (data) -> 
-				html = HandlebarsTemplates['listing']({auctions: data})
-				$('.listing tbody').html(html)
-				$('.navbar .num-matches').text data.length + " matches"
+				lastResult = data
+				redrawAuctions(data)
 		)
+	
+	redrawAuctions = (result) -> 
+		viewType = $('input[name=showAs]:checked').val()
+		
+		if viewType == 'list' 
+			$('.map').hide()
+			$('.listing').show()
+			html = HandlebarsTemplates['listing']({auctions: result})
+			$('.listing tbody').html(html)
+		else
+			$('.listing').hide()
+			$('.map').show()
+			addMap(result)
+			
+		$('.navbar .num-matches').text result.length + " matches"
+	
+	addMap = (auctions) -> 
+		map = new GMaps({
+		        div: '#map',
+		        lat: 39.343333,
+		        lng: -84.528333,
+				zoom: 11
+		      });
+		
+		haveRealCoords = (a for a in auctions when a.hasValidAddress)
+		
+		for a in haveRealCoords
+			map.addMarker({
+				lat: a.latitude,
+				lng: a.longitude,
+				title: a.fullAddress
+			})
+			
+		map.fitZoom()
+		
+		
 		
 	$(".show-old .button-group").buttonset()
+	$(".show-as .button-group").buttonset()
 
 	$('.listing table th').click(() -> 
 		that = this;
@@ -54,6 +92,10 @@ $ ->
 			$(this).append($('<span class="sort-dir asc">' + up_arr + '</span>'))
 			
 		refreshAuctions()
+	)
+	
+	$('.show-as input').click(() -> 
+		redrawAuctions(lastResult)
 	)
 
 	Handlebars.registerHelper('money', (amount) ->

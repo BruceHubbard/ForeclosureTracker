@@ -1,3 +1,7 @@
+html, body {
+	height: 100%;
+}
+
 body {
 	padding-top: 60px;
 }
@@ -15,6 +19,12 @@ body {
 	}
 }
 
+.map {
+	height: 85%;
+	width: 95%;
+	margin: 0 auto;
+}
+
 .filters {
 	
 	h3 {
@@ -27,7 +37,9 @@ body {
 		float: left;
 	}
 	
-	.show-old {
+	.toggle {
+		margin-left: 10px;
+		
 		label {
 			filter:alpha(opacity=80); /* IE */
 			opacity: 0.8; /* Safari, Opera */
