@@ -12,7 +12,7 @@ class Auction < ActiveRecord::Base
               rawAddress : 
               "#{streetNumber} #{streetName}  #{city}, #{state} #{zip}"
   end
-
+  
   def self.search(options)
     query = Auction.scoped
     query = query.where("appraised >= ?", options[:appraised_min]) if options[:appraised_min]

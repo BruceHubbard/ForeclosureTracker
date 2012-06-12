@@ -8,6 +8,10 @@ class AuctionController < ApplicationController
     render :json => Auction.search(params)
   end
   
+  def fix
+    @toFix = Auction.where(:hasValidAddress => false).all
+  end
+  
   def genAuction
     ButlerCountyAuctions.new.auctions.each do |auction|
       if(!Auction.exists?(:rawAddress => auction.rawAddress))

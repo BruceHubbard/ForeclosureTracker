@@ -8,6 +8,7 @@ Foreclosure::Application.routes.draw do
   resources :auction
   
   match "gen" => "auction#genAuction"
+  match "fix" => "auction#fix"
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
