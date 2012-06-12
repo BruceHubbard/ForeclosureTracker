@@ -9,7 +9,19 @@ class AuctionController < ApplicationController
   end
   
   def fix
-    @toFix = Auction.where(:hasValidAddress => false).all
+    @toFix = Auction.InvalidAddresses
+  end
+
+  def rerunGeocode
+    @toFix = Auction.InvalidAddresses
+    
+    for a in @toFix
+      AddressCleanser.Cleanse(a)
+      
+      if(a.hasValidAddress) then a.save end
+    end
+    
+    redirect_to :controller=>'auction', :action => 'fix'
   end
   
   def genAuction
