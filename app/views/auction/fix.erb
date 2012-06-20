@@ -1,3 +1,9 @@
-<% @toFix.each do |auction| %>
-    <div><%= auction.rawAddress %></div>
-<% end %>
+<div class="row">
+	<div class="span6">
+		<% @toFix.each do |auction| %>
+		    <div><%= auction.rawAddress %></div>
+		<% end %>
+	</div>
+	<div class="span6">
+		Some other stuff here
+	</div>
