@@ -1,3 +1,18 @@
+$break-small: 480px;
+$break-large: 1200px;
+
+@mixin respond-to($media) {
+  @if $media == small {
+    @media all and (max-width: 480px) { @content; }
+  }
+  @else if $media == medium {
+    @media all and (min-width: 481px) and (max-width: 1199px) { @content; }
+  }
+  @else if $media == large {
+    @media all and (min-width: 1200px) { @content; }
+  }
+}
+
 html, body {
 	height: 100%;
 }
