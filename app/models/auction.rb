@@ -17,6 +17,12 @@ class Auction < ActiveRecord::Base
     Auction.where(:hasValidAddress => false).all
   end
   
+  def self.maxStartingBid
+    max = Auction.maximum(:startingBid)
+    scope = 100000
+    return (max.to_f/scope).ceil * scope
+  end
+  
   def self.search(options)
     query = Auction.scoped
     query = query.where("appraised >= ?", options[:appraised_min]) if options[:appraised_min]

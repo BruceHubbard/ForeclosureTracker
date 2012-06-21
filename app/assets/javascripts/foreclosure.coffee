@@ -4,13 +4,13 @@ down_arr = "▾"
 $ -> 
 	lastResult = null
 	map = null
-	
+	maxValue = $('.appraised-range .max').data('val');
 	appraisedSlider = $('.appraised-range .slider').slider(
 		range: true,
 		min: 0,
-		max: 500000,
+		max: maxValue,
 		step: 20000,
-		values: [0,500000],
+		values: [0,maxValue],
 		slide: (event, ui) -> 
 		 	$('.appraised-range .min').text ui.values[0].toMoney(0)
 		 	$('.appraised-range .max').text ui.values[1].toMoney(0)

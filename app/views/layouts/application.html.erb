@@ -39,7 +39,9 @@
 							<h3>Appraised Value</h3>
 							<label class="min">0</label>
 							<span class="slider"></span>
-							<label class="max">500,000</label>
+						<% cache("max_start", :expires_in => 1.hour) do %>
+							<label class="max" data-val="<%= Auction.maxStartingBid %>"><%= number_with_delimiter(Auction.maxStartingBid)%></label>
+						<% end %>
 						</div>
 					</div>
 				</div>
